@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ececec;
+}
+
+#quiz-container {
+    background-color: #fff;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 400px;
+    text-align: center;
+}
+
+h2 {
+    color: #3498db;
+}
+
+#question {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 15px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+#result-container {
+    margin-top: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+    </style>
+    <title>Interactive Quiz</title>
+</head>
+<body>
+
+    <div id="quiz-container">
+        <h2>Quiz Time!</h2>
+        <p id="question"></p>
+
+        <form id="quiz-form">
+            <label>
+                <input type="radio" name="answer" value="option1" required>
+                <span id="option1"></span>
+            </label>
+            <br>
+
+            <label>
+                <input type="radio" name="answer" value="option2" required>
+                <span id="option2"></span>
+            </label>
+            <br>
+
+            <label>
+                <input type="radio" name="answer" value="option3" required>
+                <span id="option3"></span>
+            </label>
+            <br>
+
+            <button type="button" onclick="checkAnswer()">Submit</button>
+        </form>
+
+        <div id="result-container"></div>
+    </div>
+
+    <script>
+        var questions = [
+            {
+                question: "What is the capital of France?",
+                option1: "Paris",
+                option2: "Berlin",
+                option3: "London",
+                correctAnswer: "option1"
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                option1: "Earth",
+                option2: "Mars",
+                option3: "Jupiter",
+                correctAnswer: "option2"
+            },
+            {
+                question: "What is the largest mammal?",
+                option1: "Elephant",
+                option2: "Blue Whale",
+                option3: "Giraffe",
+                correctAnswer: "option2"
+            }
+        ];
+
+        var currentQuestion = 0;
+        var score = 0;
+
+        function displayQuestion() {
+            var current = questions[currentQuestion];
+            document.getElementById('question').innerHTML = current.question;
+            document.getElementById('option1').innerHTML = current.option1;
+            document.getElementById('option2').innerHTML = current.option2;
+            document.getElementById('option3').innerHTML = current.option3;
+        }
+
+        function checkAnswer() {
+            var selectedOption = document.querySelector('input[name="answer"]:checked');
+
+            if (selectedOption) {
+                if (selectedOption.value === questions[currentQuestion].correctAnswer) {
+                    score++;
+                }
+
+                currentQuestion++;
+
+                if (currentQuestion < questions.length) {
+                    displayQuestion();
+                } else {
+                    displayResult();
+                }
+
+                selectedOption.checked = false; // Clear the selected option
+            } else {
+                alert("Please select an option.");
+            }
+        }
+
+        function displayResult() {
+            var resultContainer = document.getElementById('result-container');
+            resultContainer.innerHTML = "Quiz Completed! Your Score: " + score + " out of " + questions.length;
+        }
+
+        // Initial display
+        displayQuestion();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+form {
+display: flex;
+flex-direction: column;
+max-width: 1000px;
+margin: 0 auto;
+}
+label {
+margin-bottom: 5px;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+input[type="submit"] {
+padding: 10px 20px;
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+input[type="submit"]:hover {
+background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+<form>
+<center>
+<fieldset>
+<table width ="50%" id="one">
+<legend> PERSONAL DETAILS</legend>
+<tr>
+<td> <LABEL for ="Name"> NAME:</LABEL></td>
+<td> <input type ="text" name="Name" id="Name"></td>
+
+</tr>
+<tr>
+<td><label for="address">ADDRESS:</label></td>
+<td><input type="text" id="address" name="address"></td>
+</tr>
+<tr>
+<td> <LABEL FOR ="EMail">EMAIL:</LABEL></td>
+<td> <input TYPE="email" name="EMail" id="EMail"> </td>
+</tr>
+<tr>
+<td> <LABEL FOR ="PHONENUMBER">PHONE NUMBER:</LABEL></td>
+<td> <INPUT TYPE ="tel" name="Telephone" id="PhoneNumber"> </td>
+</tr>
+</table>
+<center>
+<input type="submit" value="Submit">
+</center>
+</fieldset>
+</center>
+</form>
+<script>
+function validateForm() {
+var name = document.getElementById("Name").value;
+var address = document.getElementById("address").value;
+var email = document.getElementById("EMail").value;
+var phone = document.getElementById("PhoneNumber").value;
+if (name === "" || address === "" || email === "" || phone === "") {
+
+alert("Please fill in all fields.");
+return false;
+}
+return true;
+}
+document.querySelector("form").addEventListener("submit", validateForm);
+</script>
+</body>
+</html>

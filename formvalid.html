@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Validation form</title>
+   
+    <script> 
+    function regform(){
+    var name =document.form.regform.Name.value;
+    var email =document.form.regform.Email.value;
+    var phone =document.form.regform.Telephone.value;
+    var password=document.form.regform.Password.value;
+    var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; 
+    var regPhone=/^\d{10}$/; 
+    var regName = /\d+$/g;
+    if(Name==""|| regName.test(name)) {
+    window.alert("please enter your name properly");
+   
+    }
+    if(eEmail==""||regEmail.test(email)){
+    window.alert("please enter your email");
+    email.focus()
+    return false;
+    }
+    if (password == "") {
+    alert("Please enter your password");
+    password.focus();
+    return false;
+    }
+    if(password.length <6){
+    alert("Password should be atleast 6 character long");
+    password.focus();
+    return false;
+    }
+    if (phone == "" || !regPhone.test(phone)) {
+    alert("Please enter valid phone number.");
+    phone.focus();
+    return false;
+    }}
+    </script>
+    </head>
+    <body>
+    <form>
+    <center><table>
+    
+    
+    <td><label for="name">Name:</label></td>
+    <td><input type="text" id="name" name="name"><br><br></td>
+   
+    
+    <tr>
+    <td><label for="email">Email:</label></td>
+    <td><input type="email" id="email" name="email"><br><br></td>
+    </tr>
+    <tr>
+    <td><label for="pwd">Password:</label></td>
+    <td><input type="password" id="pwd" name="pwd"><br><br></td>
+    <tr>
+    
+    <td><label for="ph no">Phone number:</label></td>
+    <td><input type="number" id="ph no" name="ph no"><br><br></td>
+    <tr>
+    
+    <td><label for="gender">Gender:</label></td>
+    <td><input type="radio" id="male" name="male">
+    <label for="male">Male:</label>
+    <input type="radio" id="female" name="female">
+    <label for="female">Female:</label>
+    <input type="radio" id="other" name="other">
+    <label for="other">Other:</label><br><br></td>
+    </tr>
+    <tr>
+    <td><label for="language">language:</label>
+    <td><select id="language" name="language" >
+    <optgroup>
+    <option value="english">"English"</option>
+    <option value="tamil">"Tamil"</option>
+    <option value="hindi">"Hindi"</option>
+    <option value="arabic">"Arabic"</option></optgroup>
+    </select><br><br></td>
+    </tr>
+    <tr>
+    <td><label for="code">Address:</label></td>
+    <td><input type="number" id="code" name="code"><br><br></td>
+    </tr>
+    <tr>
+    <td><label for="about">About:</label></td>
+    <td><textarea name="message" rows="5" coloum="10">write about 
+   yourself...</textarea><br><br></td>
+    </tr>
+    </table>
+    <input id="btn" type="button" value="Register">
+   </center>
+    </form>
+    </body>
+   </html>
